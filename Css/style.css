@@ -19,7 +19,7 @@
  }
 
  html {
-    font-size: 62.5%;
+    font-size: 50.5%;
     overflow-x: hidden;
  }
 
@@ -29,9 +29,10 @@
  }
 
  section {
-    min-height: 100vh;
-    padding: 10rem 9% 2rem;
- }
+    min-height: 80vh;
+    max-width: 1500px;
+    padding: 8rem 5% 2.5rem;
+}
 
  .header {
     position: fixed;
@@ -49,6 +50,13 @@
  .header.sticky {
    border-bottom: .1rem solid rgba(0, 0, 0, .2);
  }
+
+ .header img{
+   width: 60px;
+   height: 60px;
+   object-fit: contain;
+}
+
 
  .logo {
     font-size: 2.5rem;
@@ -289,7 +297,7 @@ span {
 
 .projets-container {
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: repeat(4, 1fr);
    align-items: center;
    gap: 2.5rem;
 }
@@ -304,6 +312,7 @@ span {
 
 .projets-box img {
    width: 100%;
+   height: 250px;
    transition: .5s ease;
 }
 
@@ -408,9 +417,31 @@ span {
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 3000;
+  z-index: 4000;
   padding: 20px;
 }
+
+.modal video {
+  width: 100%;
+  height: auto;
+}
+
+.modal a{
+   display: inline-block;
+   color: #38cadd;
+   text-decoration: none;
+   transition: 0.25s ease;
+}
+
+.modal a:hover{
+   color: #38cadd;
+   text-shadow: 0 0 8px #38cadd,
+                0 0 15px #38cadd;
+
+   transform: translateY(-3px);
+}
+
+
 
 .modal.show {
   display: flex;
@@ -427,7 +458,7 @@ span {
   position: relative;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   animation: modalFade 0.3s ease;
-  max-height: 80vh;
+  max-height: 98vh;
   overflow-y: auto;
 }
 
@@ -442,6 +473,104 @@ span {
    letter-spacing: 1.5px;
 }
 
+/* ---------------- MODAL GLOBAL ---------------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  padding: 20px;
+}
+
+.modal.show {
+  display: flex;
+}
+
+/* ---------------- CONTENU MODAL ---------------- */
+.modal-content {
+  background: #323946;
+  color: #fff;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 15px;
+  padding: 50px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  max-height: 98vh;
+  overflow-y: auto;
+}
+
+/* bouton fermer */
+.close-modal {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  background: #bd4644;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  font-size: 17px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* ---------------- SLIDER ---------------- */
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding-bottom: 40px;
+}
+
+/* images superposées */
+.slide {
+  display: none;
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.slide.active {
+  display: block;
+}
+
+/* boutons next / prev */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* ---------------- ZOOM IMAGE ---------------- */
+.slide.zoomed {
+  transform: scale(1.8);
+  cursor: zoom-out;
+  z-index: 9999;
+}
+
+/* ---------------- VIDEO ---------------- */
+.modal video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
 /* petite animation */
 @keyframes modalFade {
   from { transform: translateY(-30px); opacity: 0; }
@@ -484,6 +613,35 @@ span {
 
 .modal-link:hover {
   background: #005fcc;
+}
+
+.competences-contenair {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   align-items: center;
+   gap: 3rem;
+}
+
+.competences-contenair .competences span {
+   font-size: 15px;
+}
+
+.competences-contenair .competences h2{
+   font-size: 20px;
+}
+
+.competences-contenair .competences {
+   background: var(--second-bg-color);
+   padding: 30px;
+   border-radius: 15px;
+   text-align: center;
+   border: 1px solid rgba(255, 255, 255, 0.06);
+   transition: 0.25s ease;
+}
+
+.competences-contenair .competences:hover{
+   transform: translateY(-6px);
+   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 .Contact {
@@ -583,7 +741,7 @@ span {
 }
 
 .Contact .grid .card .card-text a.link{
-   color: #8b7eff;
+   color: #7efbff;
    text-decoration: underline;
    display: inline-block;
    margin-top: 8px;
@@ -598,6 +756,7 @@ span {
    }
 }
 
+/*
 .skills {
   max-width: 800px;
   margin: 50px auto;
@@ -631,11 +790,11 @@ span {
 .skill-progress {
   height: 100%;
   width: 0;
-  background-color: #4f46e5; /* couleur barre */
+  background-color: #4f46e5;
   border-radius: 10px;
   transition: width 1.5s ease-in-out;
 }
-
+*/
 
 
 
@@ -648,13 +807,18 @@ span {
    html {
       font-size: 55%;
    }
+   .competences-contenair {
+      grid-template-columns: repeat(2, 1fr);
+   }
 }
 
 @media (max-width: 991px) {
    .header {
       padding: 2rem 3%;
    }
-
+   .competences-contenair {
+      grid-template-columns: repeat(2, 1fr);
+   }
    section {
       padding: 10rem 3% 2rem;
    }
@@ -695,6 +859,9 @@ span {
 
    .navbar.active {
       display: block;
+   }
+    .competences-contenair {
+      grid-template-columns: repeat(2, 1fr);
    }
 
    .navbar a {
@@ -759,6 +926,9 @@ span {
       text-align: center;
       justify-content: center;
    }
+   .competences-contenair {
+      grid-template-columns: repeat(2, 1fr);
+   }
    
    .home-img img {
       width: 50vw;
@@ -799,6 +969,9 @@ span {
       text-align: center;
       justify-content: center;
    }
+   .competences-contenair {
+      grid-template-columns: repeat(1, 1fr);
+   }
    .home-content h1 {
       font-size: 30px;
    }
@@ -807,6 +980,9 @@ span {
 @media (max-width: 300px) {
    html {
       font-size: 50%;
+   }
+   .competences-contenair {
+      grid-template-columns: repeat(1, 1fr);
    }
    .home-img img {
       width: 40vw;
